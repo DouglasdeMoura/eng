@@ -4,6 +4,33 @@
 
 .hentry {
 	margin: 0 0 1.5em;
+	max-width: $size__hentry;
+}
+
+.single .hentry,
+.page .hentry {
+	margin-top: 0;
+
+}
+
+.entry-header {
+	background: $color__background-entry-header;
+	color: #fff;
+	margin: -15px;
+	padding: 15px;
+}
+
+.entry-header a {
+	color: $color__entry-header-a;
+	text-decoration: none;
+}
+
+.entry-header a:hover {
+	color: $color__entry-header-a-hover;
+}
+
+.entry-meta {
+	font-size: 0.8em;
 }
 
 .byline,
