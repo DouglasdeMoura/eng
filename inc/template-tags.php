@@ -264,3 +264,16 @@ function eng_category_transient_flusher() {
 }
 add_action( 'edit_category', 'eng_category_transient_flusher' );
 add_action( 'save_post',     'eng_category_transient_flusher' );
+
+
+function eng_social_links() {
+	echo '<ul class="social-links">';
+	array_map( function( $item ) {
+		$url = get_theme_mod( 
+			eng_sanitize_setting_id( $item, eng_customize_social_links()['prefix'] )
+		);
+		if ( ! empty( $url ) && filter_var($url, FILTER_VALIDATE_URL))
+			echo '<li><a href="'. $url .'">'. $item .'</a></li>';
+	}, eng_customize_social_links()['items'] );
+	echo '</ul>';
+}

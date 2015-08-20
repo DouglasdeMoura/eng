@@ -5,6 +5,12 @@
 	select {
 		max-width: 100%;
 	}
+
+	ul {
+		margin: 0;
+		list-style: none;
+		padding: 0;
+	}
 }
 
 /* Search widget. */

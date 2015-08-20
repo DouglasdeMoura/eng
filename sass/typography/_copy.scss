@@ -16,6 +16,7 @@ address {
 
 pre {
 	background: $color__background-pre;
+	border: 1px solid $color__border-pre;
 	font-family: $font__pre;
 	@include font-size(0.9375);
 	line-height: $font__line-height-pre;

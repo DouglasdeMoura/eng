@@ -7,7 +7,9 @@
 	}
 
 	.wp-caption-text {
-		margin: 0.8075em 0;
+		background: $color__background-wp-caption-text;
+	    	padding: $padding__wp-caption-text;
+        	font-size: 0.8em;
 	}
 }
 
