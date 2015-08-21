@@ -120,6 +120,17 @@ function eng_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'eng_scripts' );
 
+function eng_new_excerpt_more() {
+	$text = sprintf(
+		/* translators: %s: Name of current post. */
+		wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'eng' ), array( 'span' => array( 'class' => array() ) ) ),
+		the_title( '<span class="screen-reader-text">"', '"</span>', false )
+	);
+	
+	return '[...] <p><a class="read-more" href="' . get_permalink( get_the_ID() ) . '">'. $text .'</a></p>';
+}
+add_filter( 'excerpt_more', 'eng_new_excerpt_more' );
+
 /**
  * Implement the Custom Header feature.
  */
