@@ -18,3 +18,23 @@
 	clear: both;
 	width: $size__site-main;
 }
+
+@media only screen and (max-width : 779px) {
+	.content-area,
+	.site-main,
+	.site-content .widget-area{
+		margin: 0;
+		width: 100%;
+	}
+}
+
+.site-footer .social-links {
+	margin: 0;
+	padding: 0;
+	text-align: right;
+	float: right;
+
+	li {
+		display: inline;
+	}
+}

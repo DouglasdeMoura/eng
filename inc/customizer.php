@@ -41,7 +41,7 @@ function eng_customize_register( $wp_customize ) {
 		$setting_sanitized = eng_sanitize_setting_id( $setting, $prefix );
 		$wp_customize->add_setting( $setting_sanitized, [
 			'default'   => '',
-			'transport' => 'postMessage'
+			'transport' => 'refresh'
 		]);
 		$wp_customize->add_control(new WP_Customize_Control(
 			$wp_customize,

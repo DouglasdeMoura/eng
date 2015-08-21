@@ -16,8 +16,8 @@
 .entry-header {
 	background: $color__background-entry-header;
 	color: #fff;
-	margin: -15px;
-	padding: 15px;
+	margin: -$padding__site-content;
+	padding: $padding__site-content;
 }
 
 .entry-header a {
@@ -27,6 +27,10 @@
 
 .entry-header a:hover {
 	color: $color__entry-header-a-hover;
+}
+
+.entry-title {
+	font-size: 2em;
 }
 
 .entry-meta {
@@ -52,4 +56,9 @@
 .page-links {
 	clear: both;
 	margin: 0 0 1.5em;
+}
+
+.cat-links,
+.tags-links {
+	display: block;
 }

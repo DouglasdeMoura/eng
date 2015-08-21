@@ -85,9 +85,13 @@
 .comment-navigation,
 .posts-navigation,
 .post-navigation {
-
+	background: #f6f6f6;
+	padding: $padding__site-content;
+	margin-left: -$padding__site-content;
+	margin-right: -$padding__site-content;
+	
 	.site-main & {
-		margin: 0 0 1.5em;
+		margin-bottom: 1.5em;
 		overflow: hidden;
 	}
 
@@ -100,5 +104,14 @@
 		float: right;
 		text-align: right;
 		width: 50%;
+	}
+
+	& .nav-next a,
+	.nav-previous a {
+		color: #777;
+		display: block;
+		text-transform: uppercase;
+		font-weight: bold;
+		font-size: 0.8em;
 	}
 }
