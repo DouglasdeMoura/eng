@@ -27,17 +27,34 @@
 	<header id="masthead" class="site-header" role="banner">
 		<div class="site-branding">
 			<?php if ( is_front_page() && is_home() ) : ?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php echo eng_change_bloginfo_name( get_bloginfo( 'name' ) ); ?></a></h1>
 			<?php else : ?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php echo eng_change_bloginfo_name( get_bloginfo( 'name' ) ); ?></a></p>
 			<?php endif; ?>
-			<p class="site-description"><?php bloginfo( 'description' ); ?></p>
+			<p class="site-description screen-reader-text"><?php bloginfo( 'description' ); ?></p>
 		</div><!-- .site-branding -->
-
+		
+		<button class="menu-toggle btn" aria-controls="primary-menu" aria-expanded="false"><i class="genericon genericon-menu"></i><span class="screen-reader-text"><?php esc_html_e( 'Primary Menu', 'eng' ); ?></span></button>
+		
 		<nav id="site-navigation" class="main-navigation" role="navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'eng' ); ?></button>
+			<h2 class="navigation-title"><?php echo __( 'Menu', 'eng' ) ?></h2>
+			<button class="close-menu"><i class="genericon genericon-close-alt"></i><span class="screen-reader-text"><?php echo __( 'Close menu', 'eng' ) ?></span></button>
 			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
+			<?php echo eng_social_links() ?>
 		</nav><!-- #site-navigation -->
+		
+		<button class="display-search btn" aria-controls="site-search" aria-expanded="false"><i class="genericon genericon-search"></i></button>
+			
 	</header><!-- #masthead -->
+	
+	<div class="site-search">
+		<div class="search-container">
+			<i class="genericon genericon-search"></i>
+			<?php get_search_form( true ); ?>
+			<button class="close-site-search" aria-controls="site-search" aria-expanded="false"><i class="genericon genericon-close-alt"></i></button>
+		</div>
+	</div>
 
-	<div id="content" class="site-content">
+	<div id="wrapper" class="site-wrapper">
+		
+		<div id="content" class="site-content">

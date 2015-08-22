@@ -16,15 +16,27 @@
 
 .site-footer {
 	clear: both;
-	width: $size__site-main;
+	max-width: $size__site-content;
+	margin: auto;
+	padding: 5px $padding__site-content;
+	font-size: 0.8em;
 }
 
 @media only screen and (max-width : 779px) {
 	.content-area,
-	.site-main,
-	.site-content .widget-area{
+	.site-main {
 		margin: 0;
 		width: 100%;
+	}
+	
+	.site-content .widget-area {
+		display: none;
+	}
+	
+	.comment-navigation,
+	.posts-navigation,
+	.post-navigation {
+		margin-right: -$padding__site-content;
 	}
 }
 

@@ -1,0 +1,131 @@
+.site-header {
+  background: $color__green;
+  color: #fff;
+  height: $height__site-header;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  top: 0;
+  
+  .btn {
+    background: $color__green;
+    border: $color__green;
+    display: inline-block;
+    height: $height__site-header;
+    width: $height__site-header;
+    line-height: $color__green;
+    padding: 0.75em;
+	position: absolute;
+	top: 0px;
+  }
+  
+  .btn:hover {
+    background: lighten($color__green, 5%);
+    border: lighten($color__green, 5%);
+  }
+  
+  .display-search {
+	right: 0;
+  }
+
+  .btn .genericon {
+    font-size: em(32);
+  }
+  
+  a {
+	color: #fff;
+	display: block;
+  }
+}
+
+.logged-in .site-header {
+	top: 32px;
+}
+
+.site-title {
+	text-align: center;
+	margin: 0;
+	line-height: $height__site-header;
+	font-size: $size__site-title;
+	
+	a:hover,
+	a:focus {
+		text-decoration: none;
+	}
+	
+	strong {
+		font-weight: 500;
+	}
+}
+
+.site-search {
+	background: #fff;
+	color: $color__black;
+	text-align: center;
+	padding: 10px;
+	z-index: 998;
+	position: fixed;
+	width: 100%;
+	top: $height__site-header;
+	-webkit-transform: translate(0, -$height__site-header);
+          transform: translate(0, -$height__site-header);
+	
+	.search-container {
+		max-width: 760px;
+		margin: auto;
+		height: 32px;
+		line-height: 32px;
+	}
+	
+	.genericon-search {
+		font-size: 22px;
+		height: 32px;
+		line-height: 32px;
+	}
+	
+	.search-submit {
+		display: none;
+	}
+	
+	.search-form {
+		display: inline-block;
+		width: 70%;
+	}
+	
+	.search-field {
+		background: #fff;
+		border-color: #fff;
+		border-bottom: 1px solid $color__border-input;
+		width: 70%;
+		display: inline;
+	}
+	
+	button {
+		color: $color__black;
+		border: #fff;
+		background: #fff;
+	}
+	button:hover {
+		background: #f6f6f6;
+	}
+}
+
+.site-search.open {
+	-webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+
+.site-search.opened {
+  -webkit-transition: -webkit-$animation__drawer;
+          transition: $animation__drawer;
+}
+
+.logged-in {
+	.site-search  {
+		top: $height__site-header + 32;
+	}
+}
+
+.site-wrapper {
+	margin-top: $margin__top-wrapper;
+}

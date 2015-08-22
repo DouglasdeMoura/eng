@@ -22,10 +22,10 @@ if ( post_password_required() ) {
 
 <div id="comments" class="comments-area">
 
-	<?php // You can start editing here -- including this comment! ?>
+	<?php comment_form(); ?>
 
 	<?php if ( have_comments() ) : ?>
-		<h2 class="comments-title">
+		<h2 class="comments-title screen-reader-text">
 			<?php
 				printf( // WPCS: XSS OK.
 					esc_html( _nx( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'eng' ) ),
@@ -34,6 +34,8 @@ if ( post_password_required() ) {
 				);
 			?>
 		</h2>
+	<?php endif; ?>
+	<?php if ( have_comments() ) : ?>
 
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
 		<nav id="comment-nav-above" class="navigation comment-navigation" role="navigation">
@@ -50,8 +52,9 @@ if ( post_password_required() ) {
 		<ol class="comment-list">
 			<?php
 				wp_list_comments( array(
-					'style'      => 'ol',
-					'short_ping' => true,
+					'style'       => 'ol',
+					'short_ping'  => true,
+					'avatar_size' => 75,
 				) );
 			?>
 		</ol><!-- .comment-list -->
@@ -76,7 +79,5 @@ if ( post_password_required() ) {
 	?>
 		<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'eng' ); ?></p>
 	<?php endif; ?>
-
-	<?php comment_form(); ?>
 
 </div><!-- #comments -->

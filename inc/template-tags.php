@@ -265,15 +265,30 @@ function eng_category_transient_flusher() {
 add_action( 'edit_category', 'eng_category_transient_flusher' );
 add_action( 'save_post',     'eng_category_transient_flusher' );
 
+function eng_change_bloginfo_name( $text ) {
+	if ( $text === 'Engenharia Livre' ) {
+		$text = explode( ' ', $text);
+		$text = "{$text[0]} <strong>{$text[1]}</strong>";
+	}
+	
+	return $text;
+}
 
 function eng_social_links() {
+	
 	echo '<ul class="social-links">';
 	array_map( function( $item ) {
+		$item_sanitized = eng_sanitize_setting_id( $item );
+		$item_sanitized_with_prefix = eng_customize_social_links()['prefix'] . $item_sanitized;
+		
 		$url = get_theme_mod( 
-			eng_sanitize_setting_id( $item, eng_customize_social_links()['prefix'] )
+			$item_sanitized_with_prefix
 		);
-		if ( ! empty( $url ) && filter_var($url, FILTER_VALIDATE_URL))
-			echo '<li><a href="'. $url .'">'. $item .'</a></li>';
+		
+		$item_sanitized = ( $item_sanitized == 'google' ) ? 'googleplus' : $item_sanitized;
+
+		if ( ! empty( $url ) && filter_var( $url, FILTER_VALIDATE_URL ) )
+			echo '<li><a target="_blank" title="'. $item .'" href="'. $url .'"><i class="genericon genericon-'. $item_sanitized .'"></i><span class="screen-reader-text">'. $item .'</span></a></li>';
 	}, eng_customize_social_links()['items'] );
 	echo '</ul>';
 }
