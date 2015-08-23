@@ -57,4 +57,5 @@
 
 	<div id="wrapper" class="site-wrapper">
 		
+		<?php eng_featured_posts(); ?>
 		<div id="content" class="site-content">

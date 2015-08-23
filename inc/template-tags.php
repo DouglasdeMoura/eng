@@ -306,6 +306,43 @@ function eng_featured_posts() {
 		$orderby = get_theme_mod( 'eng_featured_posts_orderby' );
 		
 		/** Start the query **/
-		$query = new WP_Query( "cat={$category_id}&posts_per_page={$posts_per_page}&orderby={$orderby}" );
+		$query = new WP_Query([
+			'cat' => $category_id,
+			'posts_per_page' => $posts_per_page,
+			'orderby' => $orderby,
+			'meta_query' => [
+				['key' => '_thumbnail_id']
+			]
+		]);
+		
+		//Store posts ID in order the exclude them from the main query
+		if ( $query->have_posts() ) {
+			$ids = [];
+			$output = '<section id="featured-posts" class="slides">';
+			while ( $query->have_posts() ) {
+				$the_query->the_post();
+				$ids[] = get_the_ID();
+				$output .= '<article id="post-'. the_ID() .'" class="'. implode( ' ', get_post_class() ) .'">';
+				$output .= '<div class="entry-header">';
+				$output .= '<h2 class="entry-title"><a href="'. get_permalink() .'" rel="bookmark">'. get_the_title() .'</a></h2>';
+				$output .= '<div class="entry-summary screen-reader-text">';
+				$output .= get_the_excerpt();
+				$output .= '</div>';
+				$output .= '</div>';
+				$output .= '</article>';
+			}
+			$output .= '</section>';
+		}
+		
+		//Restore original Post Data
+		wp_reset_postdata();
+	
+		//Exclude featured posts from the main query
+		add_action( 'pre_get_posts', function( $query ) use( $ids ) {
+			if ( $query->is_home() && $query->is_main_query() )
+				$query->set( 'post__not_in', $ids );
+		} );
+
+		echo $output;
 	}
 }
