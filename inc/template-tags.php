@@ -265,6 +265,14 @@ function eng_category_transient_flusher() {
 add_action( 'edit_category', 'eng_category_transient_flusher' );
 add_action( 'save_post',     'eng_category_transient_flusher' );
 
+function eng_change_bloginfo_name( $text ) {
+	if ( $text === 'Engenharia Livre' ) {
+		$text = explode( ' ', $text);
+		$text = "{$text[0]} <strong>{$text[1]}</strong>";
+	}
+	
+	return $text;
+}
 
 function eng_social_links() {
 	echo '<ul class="social-links">';
@@ -283,8 +291,7 @@ function eng_thumbnail() {
 	if ( has_post_thumbnail() ) {
 		the_post_thumbnail();
 	} else {
-		echo '<img src="http://novo.engenharialivre.com/wp-content/uploads/2015/08/photo-1436891620584-47fd0e565afb-e1440250721876-1024x
-72.jpeg">';
+		echo '<img src="http://novo.engenharialivre.com/wp-content/uploads/2015/08/photo-1436891620584-47fd0e565afb-e1440250721876-1024x372.jpeg" />';
 	}
 	echo '</div>';
 
