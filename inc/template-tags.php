@@ -332,17 +332,18 @@ function eng_featured_posts() {
 				$output .= '</article>';
 			}
 			$output .= '</section>';
+			
+			//Restore original Post Data
+			wp_reset_postdata();
+			
+			//Exclude featured posts from the main query
+			add_action( 'pre_get_posts', function( $query ) use( $ids ) {
+				if ( $query->is_home() && $query->is_main_query() )
+					$query->set( 'post__not_in', $ids );
+			} );
+
 		}
 		
-		//Restore original Post Data
-		wp_reset_postdata();
-	
-		//Exclude featured posts from the main query
-		add_action( 'pre_get_posts', function( $query ) use( $ids ) {
-			if ( $query->is_home() && $query->is_main_query() )
-				$query->set( 'post__not_in', $ids );
-		} );
-
 		echo $output;
 	}
 }
