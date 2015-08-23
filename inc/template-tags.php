@@ -265,30 +265,40 @@ function eng_category_transient_flusher() {
 add_action( 'edit_category', 'eng_category_transient_flusher' );
 add_action( 'save_post',     'eng_category_transient_flusher' );
 
-function eng_change_bloginfo_name( $text ) {
-	if ( $text === 'Engenharia Livre' ) {
-		$text = explode( ' ', $text);
-		$text = "{$text[0]} <strong>{$text[1]}</strong>";
-	}
-	
-	return $text;
-}
 
 function eng_social_links() {
-	
 	echo '<ul class="social-links">';
 	array_map( function( $item ) {
-		$item_sanitized = eng_sanitize_setting_id( $item );
-		$item_sanitized_with_prefix = eng_customize_social_links()['prefix'] . $item_sanitized;
-		
 		$url = get_theme_mod( 
-			$item_sanitized_with_prefix
+			eng_sanitize_setting_id( $item, eng_customize_social_links()['prefix'] )
 		);
-		
-		$item_sanitized = ( $item_sanitized == 'google' ) ? 'googleplus' : $item_sanitized;
-
-		if ( ! empty( $url ) && filter_var( $url, FILTER_VALIDATE_URL ) )
-			echo '<li><a target="_blank" title="'. $item .'" href="'. $url .'"><i class="genericon genericon-'. $item_sanitized .'"></i><span class="screen-reader-text">'. $item .'</span></a></li>';
+		if ( ! empty( $url ) && filter_var($url, FILTER_VALIDATE_URL))
+			echo '<li><a href="'. $url .'">'. $item .'</a></li>';
 	}, eng_customize_social_links()['items'] );
 	echo '</ul>';
+}
+
+function eng_thumbnail() {
+	echo '<div class="entry-thumbnail">';
+	if ( has_post_thumbnail() ) {
+		the_post_thumbnail();
+	} else {
+		echo '<img src="http://novo.engenharialivre.com/wp-content/uploads/2015/08/photo-1436891620584-47fd0e565afb-e1440250721876-1024x
+72.jpeg">';
+	}
+	echo '</div>';
+
+}
+
+function eng_featured_posts() {
+	if ( is_home() && is_front_page() ) {
+		$category_id = get_theme_mod( 'eng_featured_posts_category' );
+		if ( empty( $category_id ) )
+			return;
+		$posts_per_page = get_theme_mod( 'eng_featured_posts_amount' );
+		$orderby = get_theme_mod( 'eng_featured_posts_orderby' );
+		
+		/** Start the query **/
+		$query = new WP_Query( "cat={$category_id}&posts_per_page={$posts_per_page}&orderby={$orderby}" );
+	}
 }

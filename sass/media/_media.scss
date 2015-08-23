@@ -1,3 +1,13 @@
+.entry-thumbnail {
+	background: $color__background-entry-header;
+	margin: -15px;
+	
+}
+
+.entry-thumbnail img {
+	height: 250px;
+}
+
 .page-content .wp-smiley,
 .entry-content .wp-smiley,
 .comment-content .wp-smiley {

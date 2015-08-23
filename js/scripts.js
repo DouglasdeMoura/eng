@@ -46,6 +46,8 @@
   search.addEventListener('click', toggleSearch);
   searchClose.addEventListener('click', closeSearch);
   main.addEventListener('click', closeSearch);
+  
+  
 /*
   jQuery('.slides').slick({
     dots: true,

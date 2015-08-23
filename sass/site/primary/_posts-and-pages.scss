@@ -14,10 +14,17 @@
 }
 
 .entry-header {
-	background: $color__background-entry-header;
 	color: #fff;
-	margin: -$padding__site-content;
+	margin: 0 -$padding__site-content;
 	padding: $padding__site-content;
+	position: absolute;
+	max-width: $size__hentry;
+}
+
+.page .entry-header,
+.single .entry-header {
+	background: $color__darkblue;
+	position: relative;
 }
 
 .entry-header a {
@@ -30,11 +37,21 @@
 }
 
 .entry-title {
+	background: $color__darkblue;
 	font-size: 2em;
+	padding: 5px 10px;
 }
 
 .entry-meta {
+	background: #fff;
+	color: #777;
+	display: inline-block;
 	font-size: 0.8em;
+	padding: 5px 10px;
+}
+
+.entry-meta a {
+	color: #777;
 }
 
 .byline,
