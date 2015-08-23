@@ -286,18 +286,24 @@ function eng_social_links() {
 	echo '</ul>';
 }
 
-function eng_thumbnail() {
-	echo '<div class="entry-thumbnail">';
+function eng_thumbnail( $echo = true ) {
+	$output = '<div class="entry-thumbnail">';
 	if ( has_post_thumbnail() ) {
-		the_post_thumbnail();
+		$output .= get_the_post_thumbnail();
 	} else {
-		echo '<img src="http://novo.engenharialivre.com/wp-content/uploads/2015/08/photo-1436891620584-47fd0e565afb-e1440250721876-1024x372.jpeg" />';
+		$output .= '<img src="http://novo.engenharialivre.com/wp-content/uploads/2015/08/photo-1436891620584-47fd0e565afb-e1440250721876-1024x372.jpeg" />';
 	}
-	echo '</div>';
+	$output .=  '</div>';
+
+	if ( $echo === true  ) {
+		echo $output;
+	} else {
+		return $output;
+	}
 
 }
 
-function eng_featured_posts() {
+function eng_featured_posts( $arg = null ) {
 	if ( is_home() && is_front_page() ) {
 		$category_id = get_theme_mod( 'eng_featured_posts_category' );
 		if ( empty( $category_id ) )
@@ -322,28 +328,34 @@ function eng_featured_posts() {
 			while ( $query->have_posts() ) {
 				$query->the_post();
 				$ids[] = get_the_ID();
-				$output .= '<article id="post-'. get_the_ID() .'" class="'. implode( ' ', get_post_class() ) .'">';
-				$output .= '<div class="entry-header">';
-				$output .= '<h2 class="entry-title"><a href="'. get_permalink() .'" rel="bookmark">'. get_the_title() .'</a></h2>';
-				$output .= '<div class="entry-summary screen-reader-text">';
-				$output .= get_the_excerpt();
-				$output .= '</div>';
-				$output .= '</div>';
-				$output .= '</article>';
+				if ( $arg === null ) {
+					$output .= '<article id="post-'. get_the_ID() .'" class="'. implode( ' ', get_post_class() ) .'">';
+					$output .= eng_thumbnail( false );
+					$output .= '<div class="entry-header">';
+					$output .= '<h2 class="entry-title"><a href="'. get_permalink() .'" rel="bookmark">'. get_the_title() .'</a></h2>';
+					$output .= '<div class="entry-summary screen-reader-text">';
+					$output .= get_the_excerpt();
+					$output .= '</div>';
+					$output .= '</div>';
+					$output .= '</article>';
+				}
 			}
 			$output .= '</section>';
 		}
 		
 		//Restore original Post Data
 		wp_reset_postdata();
-	
-		//Exclude featured posts from the main query
-		add_action( 'pre_get_posts', function( $query ) use( $ids ) {
-			if ( $query->is_home() && $query->is_main_query() )
-				$query->set( 'post__not_in', $ids );
-		} );
 
-		echo $output;
+		if ( $arg === 'ids' ) {
+			return $ids;
+		} else {
+			echo $output;
+		}
 	}
 }
+
+add_action( 'pre_get_posts', function( $query ) {
+	if ( $query->is_home() && $query->is_main_query() )
+		$query->set( 'post__not_in', eng_featured_posts( 'ids' ) );
+} );
 

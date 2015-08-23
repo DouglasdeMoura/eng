@@ -1,8 +1,14 @@
+.slides {
+	max-width: $size__site-content;
+	margin: auto;
+	margin-bottom: 1em;
+}
+
 .sticky {
 	display: block;
 }
 
-.hentry {
+.site-main .hentry {
 	margin: 0 0 1.5em;
 	max-width: $size__hentry;
 }
@@ -15,10 +21,13 @@
 
 .entry-header {
 	color: #fff;
-	margin: 0 -$padding__site-content;
-	padding: $padding__site-content;
+}
+
+.site-main .entry-header {
 	position: absolute;
+	margin: 0 -$padding__site-content;
 	max-width: $size__hentry;
+	padding: $padding__site-content;
 }
 
 .page .entry-header,
