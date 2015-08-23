@@ -320,7 +320,7 @@ function eng_featured_posts() {
 			$ids = [];
 			$output = '<section id="featured-posts" class="slides">';
 			while ( $query->have_posts() ) {
-				$the_query->the_post();
+				$query->the_post();
 				$ids[] = get_the_ID();
 				$output .= '<article id="post-'. the_ID() .'" class="'. implode( ' ', get_post_class() ) .'">';
 				$output .= '<div class="entry-header">';
@@ -332,18 +332,18 @@ function eng_featured_posts() {
 				$output .= '</article>';
 			}
 			$output .= '</section>';
-			
-			//Restore original Post Data
-			wp_reset_postdata();
-			
-			//Exclude featured posts from the main query
-			add_action( 'pre_get_posts', function( $query ) use( $ids ) {
-				if ( $query->is_home() && $query->is_main_query() )
-					$query->set( 'post__not_in', $ids );
-			} );
-
 		}
 		
+		//Restore original Post Data
+		wp_reset_postdata();
+	
+		//Exclude featured posts from the main query
+		add_action( 'pre_get_posts', function( $query ) use( $ids ) {
+			if ( $query->is_home() && $query->is_main_query() )
+				$query->set( 'post__not_in', $ids );
+		} );
+
 		echo $output;
 	}
 }
+
