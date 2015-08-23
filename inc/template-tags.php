@@ -322,7 +322,7 @@ function eng_featured_posts() {
 			while ( $query->have_posts() ) {
 				$query->the_post();
 				$ids[] = get_the_ID();
-				$output .= '<article id="post-'. the_ID() .'" class="'. implode( ' ', get_post_class() ) .'">';
+				$output .= '<article id="post-'. get_the_ID() .'" class="'. implode( ' ', get_post_class() ) .'">';
 				$output .= '<div class="entry-header">';
 				$output .= '<h2 class="entry-title"><a href="'. get_permalink() .'" rel="bookmark">'. get_the_title() .'</a></h2>';
 				$output .= '<div class="entry-summary screen-reader-text">';
