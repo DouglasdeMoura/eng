@@ -24,8 +24,9 @@
 }
 
 .site-main .entry-header {
-	position: absolute;
-	margin: 0 -$padding__site-content;
+	background: #fff;
+	position: relative;
+	margin-top: -50px;
 	max-width: $size__hentry;
 	padding: $padding__site-content;
 }
@@ -46,14 +47,13 @@
 }
 
 .entry-title {
-	background: $color__darkblue;
 	font-size: 2em;
-	padding: 5px 10px;
+	margin: 0;
 }
 
 .slides .entry-title {
 	background: $color__purple;
-	margin: 0;
+	padding: 5px 10px;
 }
 
 .entry-meta {
