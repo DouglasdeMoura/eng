@@ -4,6 +4,7 @@ jQuery('.slides').slick({
   speed: 300,
   slidesToShow: 1,
   adaptiveHeight: true,
+  arrows: false,
 //  autoplay: true,
 //  autoplaySpeed: 4000
 });

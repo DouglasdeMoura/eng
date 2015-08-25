@@ -280,8 +280,10 @@ function eng_social_links() {
 		$url = get_theme_mod( 
 			eng_sanitize_setting_id( $item, eng_customize_social_links()['prefix'] )
 		);
-		if ( ! empty( $url ) && filter_var($url, FILTER_VALIDATE_URL))
-			echo '<li><a href="'. $url .'">'. $item .'</a></li>';
+		if ( ! empty( $url ) && filter_var($url, FILTER_VALIDATE_URL) ) {
+			$class =  ( eng_sanitize_setting_id( $item ) === 'google' ) ? 'googleplus' : eng_sanitize_setting_id( $item );
+			echo '<li><a href="'. $url .'"><i class="genericon genericon-'. $class .'"></i><span class="screen-reader-text">'. $item .'</span></a></li>';
+		}
 	}, eng_customize_social_links()['items'] );
 	echo '</ul>';
 }
@@ -289,9 +291,13 @@ function eng_social_links() {
 function eng_thumbnail( $echo = true ) {
 	$output = '<div class="entry-thumbnail">';
 	if ( has_post_thumbnail() ) {
-		$output .= get_the_post_thumbnail();
+		if ( ! is_page() && ! is_single()  )
+			$output .= '<a href="'. get_the_permalink()  .'">';
+		$output .=  get_the_post_thumbnail(); 
+		if ( ! is_page() && ! is_single()  )
+			$output .= '</a>';
 	} else {
-		$output .= '<img src="http://novo.engenharialivre.com/wp-content/uploads/2015/08/photo-1436891620584-47fd0e565afb-e1440250721876-1024x372.jpeg" />';
+		//$output .= '<img src="http://novo.engenharialivre.com/wp-content/uploads/2015/08/photo-1436891620584-47fd0e565afb-e1440250721876-1024x372.jpeg" />';
 	}
 	$output .=  '</div>';
 
@@ -320,10 +326,11 @@ function eng_featured_posts( $arg = null ) {
 				['key' => '_thumbnail_id']
 			]
 		]);
-		
+
 		//Store posts ID in order the exclude them from the main query
 		if ( $query->have_posts() ) {
 			$ids = [];
+			$i = 1;
 			$output = '<section id="featured-posts" class="slides">';
 			while ( $query->have_posts() ) {
 				$query->the_post();
@@ -337,8 +344,9 @@ function eng_featured_posts( $arg = null ) {
 					$output .= get_the_excerpt();
 					$output .= '</div>';
 					$output .= '</div>';
-					$output .= '</article>';
+					$output .= '</article>';				
 				}
+				$i++;
 			}
 			$output .= '</section>';
 		}

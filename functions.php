@@ -111,6 +111,8 @@ function eng_scripts() {
 	wp_enqueue_style( 'eng-style', get_template_directory_uri() . '/sass/style.php' );
 	
 	wp_enqueue_style( 'genericons', get_template_directory_uri() . '/genericons/genericons.css' );
+	
+	wp_enqueue_style( 'eng-fonts', 'https://fonts.googleapis.com/css?family=Fira+Sans:500,300italic,300,700italic,700|Open+Sans:300,300italic,700,700italic' );
 
 	wp_enqueue_script( 'eng-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 

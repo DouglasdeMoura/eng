@@ -26,6 +26,7 @@
   function closeSearch() {
     searchform.classList.remove('open');
     document.querySelector('.search').classList.remove('hide');
+    if (document.activeElement != document.body) document.activeElement.blur();
   }
 
   function toggleSearch() {
@@ -46,17 +47,5 @@
   search.addEventListener('click', toggleSearch);
   searchClose.addEventListener('click', closeSearch);
   main.addEventListener('click', closeSearch);
-  
-  
-/*
-  jQuery('.slides').slick({
-    dots: true,
-    infinite: true,
-    speed: 300,
-    slidesToShow: 1,
-    adaptiveHeight: true,
-    autoplay: true,
-    autoplaySpeed: 3000,
-  });
-*/
+
 })();

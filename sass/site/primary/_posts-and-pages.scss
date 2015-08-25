@@ -1,7 +1,16 @@
 .slides {
 	max-width: $size__site-content;
 	margin: auto;
-	margin-bottom: 1em;
+}
+
+.slides .entry-title a {
+	color: #fff;
+	display: block;
+	text-align: center;
+}
+
+.slides .entry-title a:hover {
+	color: $color__yellow;
 }
 
 .sticky {
@@ -20,21 +29,23 @@
 }
 
 .entry-header {
-	color: #fff;
+	color: $color__black;
 }
 
 .site-main .entry-header {
 	background: #fff;
+	border-bottom: 1px solid #ccc;
 	position: relative;
-	margin-top: -50px;
 	max-width: $size__hentry;
 	padding: $padding__site-content;
 }
 
-.page .entry-header,
-.single .entry-header {
-	background: $color__darkblue;
-	position: relative;
+.has-post-thumbnail .entry-header {
+	margin-top: -52px;
+}
+
+.slides .has-post-thumbnail .entry-header {
+	margin-top: 0;
 }
 
 .entry-header a {
@@ -61,11 +72,15 @@
 	color: #777;
 	display: inline-block;
 	font-size: 0.8em;
-	padding: 5px 10px;
 }
 
 .entry-meta a {
 	color: #777;
+}
+
+.read-more {
+	display: block;
+	text-align: right;
 }
 
 .byline,
@@ -81,12 +96,16 @@
 .page-content,
 .entry-content,
 .entry-summary {
-	margin: 1.5em 0 0;
+	margin: 1em 0 0;
 }
 
 .page-links {
 	clear: both;
 	margin: 0 0 1.5em;
+}
+
+.page-header {
+	border-bottom: 1px solid #ccc;
 }
 
 .cat-links,
