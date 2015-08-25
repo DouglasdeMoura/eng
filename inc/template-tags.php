@@ -321,6 +321,7 @@ function eng_featured_posts( $arg = null ) {
 		$query = new WP_Query([
 			'cat' => $category_id,
 			'posts_per_page' => $posts_per_page,
+			'order' => 'ASC',
 			'orderby' => $orderby,
 			'meta_query' => [
 				['key' => '_thumbnail_id']
