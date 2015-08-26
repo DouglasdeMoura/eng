@@ -1,0 +1,233 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Eng 1.0\n"
+"POT-Creation-Date: 2015-03-14 05:17-0300\n"
+"PO-Revision-Date: 2015-03-14 05:51-0300\n"
+"Last-Translator: Douglas Moura <douglas.ademoura@gmail.com>\n"
+"Language-Team: Douglas Araujo de Moura <douglas.ademoura@gmail.com>\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: content-single.php:25 content-page.php:18 content.php:64
+msgid "Pages:"
+msgstr "Páginas"
+
+#: 404.php:15
+msgid "Oops! That page can&rsquo;t be found."
+msgstr "Oops! Esta página não pode ser encontrada."
+
+#: 404.php:19
+msgid ""
+"It looks like nothing was found at this location. Maybe try one of the links "
+"below or a search?"
+msgstr ""
+"Parece que nada foi encontrado aqui. Tente os links abaixo ou a pesquisa."
+
+#: 404.php:27
+msgid "Most Used Categories"
+msgstr "Categorias mais utilizadas"
+
+#: 404.php:44
+#, php-format
+msgid "Try looking in the monthly archives. %1$s"
+msgstr "Tente olhar nos arquivos mensais. %1$s"
+
+#: content-none.php:13
+msgid "Nothing Found"
+msgstr "Nada encontrado"
+
+#: content-none.php:19
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+"Pronto para publicar seu primeiro post? <a href=\"%1$s\">Comece aqui</a>."
+
+#: content-none.php:23
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+"Desculpe, nada foi encontrado de acordo com os termos da pequisa. Tente "
+"novamente com outras palavras-chave."
+
+#: content-none.php:28
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+"Parece que não conseguimos achar o que você esta procurando. Talvez a "
+"pesquisa possa ajudar."
+
+#: functions.php:61 header.php:32
+msgid "Primary Menu"
+msgstr "Menu primário"
+
+#: functions.php:96
+msgid "Sidebar"
+msgstr "Barra latera"
+
+#: header.php:23
+msgid "Skip to content"
+msgstr "Pular para o conteúdo"
+
+#: content-page.php:25 inc/template-tags.php:177
+msgid "Edit"
+msgstr "Editar"
+
+#: comments.php:35 comments.php:52
+msgid "Comment navigation"
+msgstr "Navegação dos comentários"
+
+#: comments.php:36 comments.php:53
+msgid "&larr; Older Comments"
+msgstr "&larr; Comentários antigos"
+
+#: comments.php:37 comments.php:54
+msgid "Newer Comments &rarr;"
+msgstr "Comentários recentes &rarr;"
+
+#: comments.php:64
+msgid "Comments are closed."
+msgstr "Os  comentários estão fechados."
+
+#: content.php:57
+#, php-format
+msgid "Continue reading %s <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Continue lendo %s <span class=\"meta-nav\">&rarr;</span>"
+
+#: index.php:23 old/search.php:16
+#, php-format
+msgid "Search Results for: %s"
+msgstr "Resultados da pesquisa para: %s"
+
+#: footer.php:15
+msgid "http://wordpress.org/"
+msgstr "http://wordpress.org/"
+
+#: footer.php:15
+#, php-format
+msgid "Proudly powered by %s"
+msgstr "Orgulhosamente movido a %s"
+
+#: footer.php:17
+#, php-format
+msgid "Theme: %1$s by %2$s."
+msgstr "Tema: %1$s por %2$s."
+
+#: inc/before-content.php:74
+msgid "ad"
+msgstr "publicidade"
+
+#: inc/extras.php:52
+#, php-format
+msgid "Page %s"
+msgstr "Página %s"
+
+#: inc/template-tags.php:23 inc/template-tags.php:81
+msgid "Posts navigation"
+msgstr "Navegação dos posts"
+
+#: inc/template-tags.php:27
+msgid "Older posts"
+msgstr "Posts anteriores"
+
+#: inc/template-tags.php:31
+msgid "Newer posts"
+msgstr "Próximos posts"
+
+#: inc/template-tags.php:73
+msgid "&larr; <span class=\"screen-reader-text\">Previous</span>"
+msgstr "&larr; <span class=\"screen-reader-text\">Anterior</span>"
+
+#: inc/template-tags.php:74
+msgid "<span class=\"screen-reader-text\">Next</span> &rarr;"
+msgstr "<span class=\"screen-reader-text\">Próximo</span> &rarr;"
+
+#: inc/template-tags.php:107
+msgid "Post navigation"
+msgstr "Navegação do post"
+
+#: inc/template-tags.php:159 inc/template-tags.php:165
+msgid ", "
+msgstr ", "
+
+#: inc/template-tags.php:161
+#, php-format
+msgid "Posted in %1$s"
+msgstr "Publicado em %1$s"
+
+#: inc/template-tags.php:167
+#, php-format
+msgid "Tagged %1$s"
+msgstr "Tags %1$s"
+
+#: inc/template-tags.php:173
+msgid "Leave a comment"
+msgstr "Deixe um comentário"
+
+#: inc/template-tags.php:173
+msgid "1 Comment"
+msgstr "1 Comentário"
+
+#: inc/template-tags.php:173
+msgid "% Comments"
+msgstr "% Comentários"
+
+#: inc/template-tags.php:194
+#, php-format
+msgid "Category: %s"
+msgstr "Categoria: %s"
+
+#: inc/template-tags.php:196
+#, php-format
+msgid "Tag: %s"
+msgstr "Tag: %s"
+
+#: inc/template-tags.php:198
+#, php-format
+msgid "Author: %s"
+msgstr "Autor: %s"
+
+#: inc/template-tags.php:200
+#, php-format
+msgid "Year: %s"
+msgstr "Ano: %s"
+
+#: inc/template-tags.php:202
+#, php-format
+msgid "Month: %s"
+msgstr "Mês: %s"
+
+#: inc/template-tags.php:204
+#, php-format
+msgid "Day: %s"
+msgstr "Dia: %s"
+
+#: inc/template-tags.php:226
+#, php-format
+msgid "Archives: %s"
+msgstr "Arquivos: %s"
+
+#: inc/template-tags.php:230
+#, php-format
+msgid "%1$s: %2$s"
+msgstr "%1$s: %2$s"
+
+#: inc/template-tags.php:232
+msgid "Archives"
+msgstr "Arquivos"
+
+#: inc/navbar.php:26
+msgid "Close search"
+msgstr "Fechar"
+
+#: inc/navbar.php:32
+msgid "Close Menu"
+msgstr "Fechar menu"

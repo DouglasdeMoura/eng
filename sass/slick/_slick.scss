@@ -1,3 +1,27 @@
+.slides {
+	max-width: $size__site-content;
+	margin: auto;
+}
+
+.slides .entry-title a {
+	color: #fff;
+	display: block;
+	text-align: center;
+}
+
+.slides .entry-title a:hover {
+	color: $color__yellow;
+}
+
+.slides .has-post-thumbnail .entry-header {
+	margin-top: 0;
+}
+
+.slides .entry-title {
+	background: $color__purple;
+	padding: 5px 10px;
+}
+
 .slick-dots {
   display: table;
   font-size: 3px;
@@ -13,9 +37,6 @@
 }
 
 .slick-dots button {
-  border: 1px solid $color__darkblue;
-  background: $color__darkblue;
-  color: $color__darkblue;
   height: 15px;
   width: 100%;
   border-radius: 0;
@@ -23,15 +44,58 @@
   text-indent: -999em;
 }
 
+#slick-slide00 button {
+  border: 1px solid $color__darkblue;
+  background: $color__darkblue;
+  color: $color__darkblue;
+}
+
+#slick-slide00 button {
+  border: 1px solid lighten($color__darkblue, 4%);
+  background: lighten($color__darkblue, 4%);
+  color: lighten($color__darkblue, 4%);
+}
+
+#slick-slide01 button {
+  border: 1px solid lighten($color__darkblue, 8%);
+  background: lighten($color__darkblue, 8%);
+  color: lighten($color__darkblue, 8%);
+}
+
+#slick-slide02 button {
+  border: 1px solid lighten($color__darkblue, 12%);
+  background: lighten($color__darkblue, 12%);
+  color: lighten($color__darkblue, 12%);
+}
+
+#slick-slide03 button {
+  border: 1px solid lighten($color__darkblue, 16%);
+  background: lighten($color__darkblue, 16%);
+  color: lighten($color__darkblue, 16%);
+}
+
+#slick-slide04 button {
+  border: 1px solid lighten($color__darkblue, 20%);
+  background: lighten($color__darkblue, 20%);
+  color: lighten($color__darkblue, 20%);
+}
+
+#slick-slide05 button {
+  border: 1px solid lighten($color__darkblue, 24%);
+  background: lighten($color__darkblue, 24%);
+  color: lighten($color__darkblue, 24%);
+}
+
 .slick-dots button:hover,
 .slick-dots button:active,
 .slick-dots button:focus {
-  background: $color__blue;
-  border: 1px solid $color__blue;
+  background: $color__blue !important;
+  border: 1px solid $color__blue !important;
+  color: !important;
 }
 
 .slick-active button {
-  background: $color__purple;
-  border: 1px solid $color__purple;
-  color: $color__purple;
+  background: $color__purple !important;
+  border: 1px solid $color__purple !important;
+  color: $color__purple !important;
 }

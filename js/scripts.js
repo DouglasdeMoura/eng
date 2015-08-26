@@ -1,15 +1,19 @@
-(function () {
+//(function () {
+//})();
   'use strict';
   var body = document.body;
   var drawer = document.querySelector('.main-navigation');
   var navbar = document.querySelector('.site-header');
-  var main = document.querySelector('.site-wrapper');
+  var wrapper = document.querySelector('.site-wrapper');
+  var main = document.querySelector('.site-content');
   var toggler = document.querySelector('.menu-toggle');
   var close = document.querySelector('.close-menu');
   var search = document.querySelector('.display-search');
   var searchClose = document.querySelector('.close-site-search');
   var searchform = document.querySelector('.site-search');
- 
+  //var mc = new Hammer(main);
+  //var mc2 = new Hammer(wrapper);
+
   function closeMenu() {
     body.classList.remove('open');
     navbar.classList.remove('open');
@@ -34,8 +38,19 @@
     searchform.classList.add('opened');
     document.querySelector('.search-field').focus();
   }
-
-  main.addEventListener('click', closeMenu);
+  /*
+  mc.on('panright', function(ev) {
+	if (ev.draggable != true)
+		toggleMenu();
+  });
+  mc.on('panleft', function(ev) {
+    closeMenu();
+  });
+  mc2.on('tap', function(ev) {
+    closeMenu();
+  });
+  */
+  wrapper.addEventListener('click', closeMenu);
   close.addEventListener('click', closeMenu);
   toggler.addEventListener('click', toggleMenu);
   drawer.addEventListener('click', function (event) {
@@ -46,6 +61,4 @@
 
   search.addEventListener('click', toggleSearch);
   searchClose.addEventListener('click', closeSearch);
-  main.addEventListener('click', closeSearch);
-
-})();
+  wrapper.addEventListener('click', closeSearch);

@@ -83,12 +83,13 @@ function eng_posted_on() {
 	);
 
 	$posted_on = sprintf(
-		esc_html_x( 'Posted on %s', 'post date', 'eng' ),
+		//esc_html_x( 'Posted on %s', 'post date', 'eng' ),
+		'<span class="screen-reader-text">Posted on</span><i class="genericon genericon-time"></i> %s',
 		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 	);
 
 	$byline = sprintf(
-		esc_html_x( 'by %s', 'post author', 'eng' ),
+		'<span class="screen-reader-text">by</span><i class="genericon genericon-user"></i> %s', //esc_html_x
 		'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 	);
 
@@ -288,12 +289,15 @@ function eng_social_links() {
 	echo '</ul>';
 }
 
-function eng_thumbnail( $echo = true ) {
+function eng_thumbnail( $echo = true, $size = [670, 256] ) {
 	$output = '<div class="entry-thumbnail">';
 	if ( has_post_thumbnail() ) {
 		if ( ! is_page() && ! is_single()  )
 			$output .= '<a href="'. get_the_permalink()  .'">';
-		$output .=  get_the_post_thumbnail(); 
+		$output .= str_replace( 'fit=', 'resize=', get_the_post_thumbnail( null, $size ) ); 
+		//echo str_replace( 'fit=', 'resize=', get_the_post_thumbnail( null, $size ) );
+		//print_r($size);
+		//echo get_the_post_thumbnail(null, $size);
 		if ( ! is_page() && ! is_single()  )
 			$output .= '</a>';
 	} else {
@@ -310,7 +314,7 @@ function eng_thumbnail( $echo = true ) {
 }
 
 function eng_featured_posts( $arg = null ) {
-	if ( is_home() && is_front_page() ) {
+	if ( is_home() && is_front_page() && ! is_paged() ) {
 		$category_id = get_theme_mod( 'eng_featured_posts_category' );
 		if ( empty( $category_id ) )
 			return;
@@ -321,8 +325,8 @@ function eng_featured_posts( $arg = null ) {
 		$query = new WP_Query([
 			'cat' => $category_id,
 			'posts_per_page' => $posts_per_page,
-			'order' => 'ASC',
-			'orderby' => $orderby,
+			'order' => 'DESC',
+			//'orderby' => $orderby,
 			'meta_query' => [
 				['key' => '_thumbnail_id']
 			]
@@ -338,7 +342,7 @@ function eng_featured_posts( $arg = null ) {
 				$ids[] = get_the_ID();
 				if ( $arg === null ) {
 					$output .= '<article id="post-'. get_the_ID() .'" class="'. implode( ' ', get_post_class() ) .'">';
-					$output .= eng_thumbnail( false );
+					$output .= eng_thumbnail( null, [960, 300] );
 					$output .= '<div class="entry-header">';
 					$output .= '<h2 class="entry-title"><a href="'. get_permalink() .'" rel="bookmark">'. get_the_title() .'</a></h2>';
 					$output .= '<div class="entry-summary screen-reader-text">';

@@ -1,18 +1,3 @@
-.slides {
-	max-width: $size__site-content;
-	margin: auto;
-}
-
-.slides .entry-title a {
-	color: #fff;
-	display: block;
-	text-align: center;
-}
-
-.slides .entry-title a:hover {
-	color: $color__yellow;
-}
-
 .sticky {
 	display: block;
 }
@@ -44,10 +29,6 @@
 	margin-top: -52px;
 }
 
-.slides .has-post-thumbnail .entry-header {
-	margin-top: 0;
-}
-
 .entry-header a {
 	color: $color__entry-header-a;
 	text-decoration: none;
@@ -60,11 +41,6 @@
 .entry-title {
 	font-size: 2em;
 	margin: 0;
-}
-
-.slides .entry-title {
-	background: $color__purple;
-	padding: 5px 10px;
 }
 
 .entry-meta {
