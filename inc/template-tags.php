@@ -320,7 +320,7 @@ function eng_featured_posts( $arg = null ) {
 			return;
 		$posts_per_page = get_theme_mod( 'eng_featured_posts_amount' );
 		$orderby = get_theme_mod( 'eng_featured_posts_orderby' );
-		
+
 		/** Start the query **/
 		$query = new WP_Query([
 			'cat' => $category_id,
@@ -336,24 +336,40 @@ function eng_featured_posts( $arg = null ) {
 		if ( $query->have_posts() ) {
 			$ids = [];
 			$i = 1;
-			$output = '<section id="featured-posts" class="slides">';
+			$output = '<div class="featured-content clear">';
+			$output .= '<section id="featured-posts" class="featured-area">';
+			$output .= '<div class="slides-container">';
+			$output .= '<div class="slides">';
+			$size = [662, 335];
 			while ( $query->have_posts() ) {
 				$query->the_post();
 				$ids[] = get_the_ID();
 				if ( $arg === null ) {
 					$output .= '<article id="post-'. get_the_ID() .'" class="'. implode( ' ', get_post_class() ) .'">';
-					$output .= eng_thumbnail( null, [960, 300] );
+					$output .= eng_thumbnail( null, $size );
 					$output .= '<div class="entry-header">';
 					$output .= '<h2 class="entry-title"><a href="'. get_permalink() .'" rel="bookmark">'. get_the_title() .'</a></h2>';
 					$output .= '<div class="entry-summary screen-reader-text">';
 					$output .= get_the_excerpt();
 					$output .= '</div>';
 					$output .= '</div>';
-					$output .= '</article>';				
+					$output .= '</article>';
+
+					if ( $i ===  ($posts_per_page - 2) ) {
+						$size = [350, 250];
+						$output .= '</div><!-- .slides -->';
+						$output .= '</div><!-- .slides-container -->';
+						$output .= '</section><!-- #featured-posts .featured-area -->';
+						$output .= '<div class="featured-sidebar">';
+					}
+						
 				}
 				$i++;
 			}
-			$output .= '</section>';
+			
+			
+			$output .= '</div><!-- .featured-sidebar -->';
+			$output .= '</div><!-- .featured-content -->'.PHP_EOL;
 		}
 		
 		//Restore original Post Data
